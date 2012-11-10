@@ -20,7 +20,7 @@ $(function(){
 			var $this = $(this);
 			var replacement_selector = $this.data('replace');
 			$this.on('submitted',function(e,data){
-				$(replacement_selector).html($("<div>").append(data).find(replacement_selector)).trigger('contentChanged');
+				$(replacement_selector).html($("<div>").append(data.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,'')).find(replacement_selector)).trigger('contentChanged');
 			})
 		}).end()
 		.filter('[data-append-from][data-append-to]').each(function(i,v){
