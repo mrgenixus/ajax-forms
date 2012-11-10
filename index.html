@@ -1,34 +1,150 @@
 <html>
 <head>
 	<title>Using Ajax-Forms</title>
-	<script src="jquery-1.8.0.min.js"></script>
-	<script src="ajax-forms.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
 	<style>
 		#data { font-size:150%; }
 		#data-modified { font-size:150%; }
 	</style>
-	<div id="data">Hello World (Data) </div>
-	<form action="dest.html" method="POST" data-replace="#data">
-		<input type="submit" value="Replace Data">
-	</form>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<h1>How to use ajax-forms</h1>
+				<h2>A very light jQuery plugin</h2>
+				<p>this is the story ...
+			</div>
+		</div>
 
-	<form action="index.html" method="POST" data-replace="#data">
-		<input type="submit" value="Reset Data">
-	</form>
+		<div class="row">
+			<div class="span8">
+				<h3>The Files</h3>
+			</div>
+			<div class="span4">
+				<h4>Files</h4>
+			</div>
+			<div class="span8">
+				<p>This example has 3 files (not including <a href="jquery.com">jquery</a> and <a href="twitter.github.com/bootstrap">bootstrap</a>). The first file: <code>index.html</code> is <em>this file</em>. The forms in this page are submitted to <code>dest.html</code> (with the exception of one, below).  The <code>final.html</code> file is a 'final' location to be navigated-to after a successful submission</p>
+			</div>
+			<div class="span4">
+				<ul>
+					<li><a href="index.html">index.html</a></li>
+					<li><a href="dest.html"> dest.html </a></li>
+					<li><a href="final.html">final.html</a></li>
+				</ul>
+			</div>
+		</div>
 
-	<form action="dest.html" method="POST" data-append-from="#data" data-append-to="#data-modified">
-		<input type="submit" value="Replace Other Data">
-	</form>
+		<div class="row">
+			<div class="span12">
+				<h3>Setup</h3>
+			</div>
+			<div class="span8">
+				<p>In order to setup for examples in this page, I've added the following code to this and <code>dest.html</code>.  As you can see, the ID attirbute (for both) is 'data.'</p>
+				<code>
+					&lt;div id="data"&gt;Hello World (Data) &lt;/div&gt;
+				</code>
+			</div>
+			<div class="span4">
+				<div id="data">Hello World (Data) </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<h3>Replacing Page components from form results</h3>
+			</div>
+			<div class="span8">
+				<p>Clicking the 'Replace Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>dest.html</code> page. Obviously, this is a static page, but your server may return customized </p>
+				<pre>
+&lt;form action="dest.html" method="POST" data-replace="#data"&gt;
+	&lt;input type="submit" value="Replace Data"&gt;
+&lt;/form&gt;
+				</pre>
+			</div>
+			<div class="span4">
+					<form action="dest.html" method="POST" data-replace="#data">
+						<input type="submit" value="Replace Data">
+					</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span8">
+				<p>Clicking the 'Reset Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>index.html</code> page. Since this <em>is</em> index.html, this essentially resets the value of the element</p>
+				<pre>
+&lt;form action="index.html" method="POST" data-replace="#data"&gt;
+	&lt;input type="submit" value="Reset Data"&gt;
+&lt;/form&gt;
+				</pre>
+			</div>
+			<div class="span4">
+				<form action="index.html" method="POST" data-replace="#data">
+					<input type="submit" value="Reset Data">
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<h3>Replacing other page components from form results</h3>
+			</div>
+			<div class="span8">
+				<p>Clicking the 'Replace Other Data' button will replace the <code>#data-modified</code> section to the right with the contents of the same element from <code>dest.html</code> page.</p>
+				<pre>
+				&lt;div id="data-modified"&gt;
+					(Other Data)
+				&lt;/div&gt;
+				&lt;form action="dest.html" method="POST" data-append-from="#data" data-append-to="#data-modified"&gt;
+					&lt;input type="submit" value="Replace Other Data"&gt;
+				&lt;/form&gt;
+				</pre>
+			</div>
+			<div class="span4">
+				<div id="data-modified">
+					(Other Data)
+				</div>
+				<form action="dest.html" method="POST" data-append-from="#data" data-append-to="#data-modified">
+					<input type="submit" value="Replace Other Data">
+				</form>
+			</div>
+			<div class="span8">
+				<p>Clicking the 'Reset Other Data' button will reload from this page's unmodified source</p>
+				<pre>
+&lt;form action="index.html" method="POST" data-replace="#data-modified"&gt;
+	&lt;input type="submit" value="Reset Other Data"&gt;
+&lt;/form&gt;
+				</pre>
+			</div>
+			<div class="span4">
+				<form action="index.html" method="POST" data-replace="#data-modified">
+					<input type="submit" value="Reset Other Data">
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<h3>Navigating on Redirect</h3>
+			</div>
+			<div class="span8">
+				<p>Clicking the 'Replace Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>dest.html</code> page. Obviously, this is a static page, but your server may return customized </p>
+				<pre>
+&lt;form action="dest.html" method="POST" data-replace="#data"&gt;
+	&lt;input type="submit" value="Replace Data"&gt;
+&lt;/form&gt;
+				</pre>
+			</div>
+			<div class="span4">
+					<form action="dest.html" method="POST" data-replace="#data">
+						<input type="submit" value="Replace Data">
+					</form>
+			</div>
+		</div>
 
-	<div id="data-modified">
-		(Other Data)
+		<form action="dest.html" method="POST" data-navigate-to="final.html">
+			<input type="submit" value="Post form but navigate to specified destination when complete">
+		</form>
 	</div>
-
-	<form action="dest.html" method="POST" data-navigate-to="final.html">
-		<input type="submit" value="Replace Other Data">
-	</form>
-
-</body>
+    <script src="jquery-1.8.0.min.js"></script>
+	<script src="ajax-forms.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
