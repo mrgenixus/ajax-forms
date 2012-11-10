@@ -55,8 +55,8 @@
 				<h3>Replacing Page components from form results</h3>
 			</div>
 			<div class="span8">
-				<p>Clicking the 'Replace Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>dest.html</code> page. Obviously, this is a static page, but your server may return customized </p>
-				<pre>
+				<p>Clicking the 'Replace Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>dest.html</code> page. Obviously, this is a static page, but your server may return customized. I'm using the <code>data-replace</code> to trigger this effect.</p>
+			<pre>
 &lt;form action="dest.html" method="POST" data-replace="#data"&gt;
 	&lt;input type="submit" value="Replace Data"&gt;
 &lt;/form&gt;
@@ -70,7 +70,7 @@
 		</div>
 		<div class="row">
 			<div class="span8">
-				<p>Clicking the 'Reset Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>index.html</code> page. Since this <em>is</em> index.html, this essentially resets the value of the element</p>
+				<p>Clicking the 'Reset Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>index.html</code> page. Since this <em>is</em> index.html, this essentially resets the value of the element. I'm using the <code>data-replace</code> attribute to trigger this effect</p>
 				<pre>
 &lt;form action="index.html" method="POST" data-replace="#data"&gt;
 	&lt;input type="submit" value="Reset Data"&gt;
@@ -88,7 +88,7 @@
 				<h3>Replacing other page components from form results</h3>
 			</div>
 			<div class="span8">
-				<p>Clicking the 'Replace Other Data' button will replace the <code>#data-modified</code> section to the right with the contents of the same element from <code>dest.html</code> page.</p>
+				<p>Clicking the 'Replace Other Data' button will replace the <code>#data-modified</code> section to the right with the contents of the same element from <code>dest.html</code> page. I'm using the <code>data-append-from</code> and <code>data-append-to</code> options to make this work.</p>
 				<pre>
 				&lt;div id="data-modified"&gt;
 					(Other Data)
@@ -107,7 +107,7 @@
 				</form>
 			</div>
 			<div class="span8">
-				<p>Clicking the 'Reset Other Data' button will reload from this page's unmodified source</p>
+				<p>Clicking the 'Reset Other Data' button will reload from this page's unmodified source. I'm using the <code>data-replace</code> atttribute to trigger this effect.</p>
 				<pre>
 &lt;form action="index.html" method="POST" data-replace="#data-modified"&gt;
 	&lt;input type="submit" value="Reset Other Data"&gt;
@@ -125,23 +125,21 @@
 				<h3>Navigating on Redirect</h3>
 			</div>
 			<div class="span8">
-				<p>Clicking the 'Replace Data' button will replace the <code>#data</code> section above with the contents of the same element from <code>dest.html</code> page. Obviously, this is a static page, but your server may return customized </p>
+				<p>Sometimes, its important to load a different page after a request. In such a case, using the <code>data-navigate-to</code> option will trigger navigation on successful completion.  Apparently, there's no way to detect if the ajax-retrieved page is, itself a redirect, so some server-side support may be required to respond in a useful way.  This is probably the lease useful option</p>
 				<pre>
-&lt;form action="dest.html" method="POST" data-replace="#data"&gt;
-	&lt;input type="submit" value="Replace Data"&gt;
+&lt;form action="dest.html" method="POST" data-navigate-to="final.html"&gt;
+	&lt;input type="submit" value="Post &amp;amp; Navigate"&gt;
 &lt;/form&gt;
 				</pre>
 			</div>
 			<div class="span4">
-					<form action="dest.html" method="POST" data-replace="#data">
-						<input type="submit" value="Replace Data">
-					</form>
+				<form action="dest.html" method="POST" data-navigate-to="final.html">
+					<input type="submit" value="Post &amp; Navigate">
+				</form>
 			</div>
 		</div>
 
-		<form action="dest.html" method="POST" data-navigate-to="final.html">
-			<input type="submit" value="Post form but navigate to specified destination when complete">
-		</form>
+
 	</div>
     <script src="jquery-1.8.0.min.js"></script>
 	<script src="ajax-forms.js"></script>
